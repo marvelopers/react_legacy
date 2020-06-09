@@ -13,14 +13,14 @@ function Card(props){
     author: ''
   });
 
-  //button 클릭시 실행되는 함수
+  //button 클릭시 submit 버튼 실행 함수
   const submit = () => {
 
     //db에 전송될 데이터
     const content = {
       ...payload,
       createAt : new Date(),
-      updateAt : new Date()
+      updateAt : new Date(),
     }
 
     //기존의 데이터와 새로운 데이터를 결합하는 방법
