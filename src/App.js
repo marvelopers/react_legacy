@@ -1,25 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
+import List from './component/List';
+import Card from './component/Card';
+import CreateCard from './component/CreateCard';
+
 function App() {
+
+  const [contentsList, setContentsList] =  useState(JSON.parse(localStorage.getItem('contentsList')));
+  const [selectedIndex, setSelectedIndex] = useState(-1); 
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <List contentsList={contentsList} setSelectedIndex={setSelectedIndex}></List>
+      {/* <Card contentsList={contentsList} selectedIndex={selectedIndex}></Card> */}
+      <CreateCard contentsList={contentsList} setContentsList={setContentsList}></CreateCard>
+
+    </>
   );
 }
 
