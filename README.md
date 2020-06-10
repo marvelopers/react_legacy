@@ -1,3 +1,31 @@
+### component
+
+#### data
+- key, title, contents, author, createAt, updateAt
+- local 
+
+#### card.js
+
+- function card
+- app.js로 부터 데이터를 받아옴 
+- read
+- craete
+- button click시, submit or update 함수 실행
+
+#### list.js
+
+- content call 함수
+- delete 함수
+- dateFormat 함수
+- return 리스트
+
+#### app.js
+
+- data JSON 전송
+---------------------------------------------------------------------
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

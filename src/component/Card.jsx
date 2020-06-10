@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import '../css/Card.css';
 
-function Card(props){
+function Card(props) {
   // const {contentsList, selectedIndex} = props;
 
 
   //App.js로부터 데이터를 받아옴.
-  const { contentsList, setContentsList, selectedIndex} = props;
+  const { contentsList, setContentsList, selectedIndex } = props;
 
   const cardDefaultValue = {
     key: '',
@@ -16,13 +16,13 @@ function Card(props){
   }
   /////////////////////raed///////////////////////////
   const [index, setIndex] = useState(-1);
-  const [card, setCard ] = useState(cardDefaultValue);
+  const [card, setCard] = useState(cardDefaultValue);
   console.log('card', card);
   useEffect(() => {
     setIndex(selectedIndex);
   }, [selectedIndex]);
 
-  useEffect(()=> {
+  useEffect(() => {
     if (contentsList[index]) setCard(contentsList[index]);
   }, [index]);
 
@@ -42,7 +42,7 @@ function Card(props){
     const newContentsList = [...contentsList, newCard];
     localStorage.setItem('contentsList', JSON.stringify(newContentsList));
     setContentsList(JSON.parse(localStorage.getItem('contentsList')));
-    
+
   }
 
   //button 클릭시 submit 버튼 실행 함수
@@ -75,7 +75,7 @@ function Card(props){
 
   ///////////////////////update//////////////////////////
   //button 클릭시 update 버튼 실행 함수
-  //인덱스까지 찾아서 덤빙 
+  //contents key를 받아서 식별
 
   const update = (payload) => {
     const updatedKey = payload.key;
@@ -89,80 +89,82 @@ function Card(props){
         return e;
       }
     });
-    
+
     localStorage.setItem('contentsList', JSON.stringify(newContentsList));
     setContentsList(JSON.parse(localStorage.getItem('contentsList')));
 
   }
-  
+
   ////////////////////////////////////////////////
-  
+
 
   let button = <></>
-  if(!card.title){
+  if (!card.title) {
     button = <button type="button" class="card__publish" onClick={submit}>publish</button>;
-  }else{
+  } else {
     button = <button type="button" class="card__update" onClick={update}>update</button>;
-    console.log('card__'+card);
+    console.log('card__' + card);
   }
 
 
-  return(
+  return (
     <>
-    <section id="Card">
-      <div class="card__detail">
-        <form class ="card__form"> 
-          <label>
-            <input 
-              class="card__title" 
-              placeholder="title"
-              value = {card.title}
-              onChange = {(e) => {
-                setCard({
-                  ...card,
-                  title: e.currentTarget.value
-                })
-              }}
+      <section id="Card">
+        <div class="card__detail">
+          <form class="card__form">
+            <label>
+              <input
+                class="card__title"
+                placeholder="title"
+                value={card.title}
+                onChange={(e) => {
+                  setCard({
+                    ...card,
+                    title: e.currentTarget.value
+                  })
+                }}
               ></input>
-          </label>
-          <label>
-            <textarea 
-              class="card__textarea" 
-              placeholder="tell your story"
-              value = {card.contents}
-              onChange = {(e) => {
-                setCard({
-                  ...card,
-                  contents: e.currentTarget.value
-                })
-              }}
-            ></textarea>
-          </label>
-          <label>
-            <input 
-              class="card__author" 
-              placeholder="author"
-              value = {card.author}
-              onChange = {(e) => {
-                setCard({
-                  ...card,
-                  author: e.currentTarget.value
-                })
-              }}
-            ></input>
-          </label>
-          <button type="button" class="card__publish" onClick={submit}>
-            {card.key === '' ? 'publish' : 'update'}
-          </button>
-          { card.key !== '' &&
-            <button type="button" class="card__publish" onClick={() => {
-            setCard(cardDefaultValue);
-          }}>
-            취소
+            </label>
+            <label>
+              <textarea
+                class="card__textarea"
+                placeholder="tell your story"
+                value={card.contents}
+                onChange={(e) => {
+                  setCard({
+                    ...card,
+                    contents: e.currentTarget.value
+                  })
+                }}
+              ></textarea>
+            </label>
+            <label>
+              <input
+                class="card__author"
+                placeholder="author"
+                value={card.author}
+                onChange={(e) => {
+                  setCard({
+                    ...card,
+                    author: e.currentTarget.value
+                  })
+                }}
+              ></input>
+            </label>
+
+            {/* status에 따라 버튼 출력 publish, update */}
+            <button type="button" class="card__publish" onClick={submit}>
+              {card.key === '' ? 'publish' : 'update'}
+            </button>
+            {card.key !== '' &&
+              <button type="button" class="card__publish" onClick={() => {
+                setCard(cardDefaultValue);
+              }}>
+                취소
           </button>}
-        </form>
-      </div>
-    </section>
+          </form>
+        </div>
+      </section>
     </>
   );
 }
