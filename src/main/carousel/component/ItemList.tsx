@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import img from './apple.jpg';
 import { useHistory } from "react-router";
 
 type ItemList = {
@@ -20,7 +21,7 @@ export const ItemList = ({ item_list }: ItemListProps) => {
       <ul>
         {item_list.map((item) => (
           <li key={item.goodsNo} onClick={() => { history.push('/') }}>
-            <img src='./apple.jpg' alt="" />
+            <img src={img} alt="" />
             <div className="name">{item.name}</div>
             {item.price && <div className="price">{item.price}</div>}
           </li>
@@ -31,39 +32,34 @@ export const ItemList = ({ item_list }: ItemListProps) => {
 };
 
 const StyledCarousel = styled.div`
-  padding: 0 20px;
-  margin: 20px 0px;
-  max-width: 748px;
-  height: 204px;
-  flex-wrap: nowrap;
-  position: relative;
-  box-sizing: border-box;
-  overflow: auto;
-  &::-webkit-scrollbar{
-    display: none;
-  }
-  letter-spacing: -0.02em;
-
 
   ul{
-    position: absolute;
+    padding-left: 20px;
+    margin: auto -20px;
     display: flex;
+    overflow: auto;
+    box-sizing: border-box;
+    overflow: auto;
+    flex-wrap: nowrap;
+    &::-webkit-scrollbar{
+      display: none;
+    }
   }
+
   li{
     padding: 0px;
     margin: 0px;
-  }
-  div{
-    line-height: 18px;
-    font-size: 14px;    
-    color: #292929;
   }
 
   .name{
     width: 129px;
     margin-bottom: 2px;
     height: 38px;
+    line-height: 18px;
+    font-size: 14px;    
+    color: #292929;
   }
+  
   .price{
     margin-top: 8px;
   }
@@ -75,10 +71,9 @@ const StyledCarousel = styled.div`
     width: 130px;
     height: 130px;
     border-radius: 10px;
-    /* background: url(${(props) => props.imgSrc}); */
+    /* background: url({(pr_ops) => p_rops.imgSrc}); */
     /* background-size: cover;
     background-repeat: no-repeat;
     background-position: center center; */
-  }
-
+    }
 `;

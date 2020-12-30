@@ -7,10 +7,10 @@ import CarouselPage from '../main/carousel/CarouselPage';
 function RootRouter() {
   return (
     <Switch>
-      <Route path='main'>
+      <Route path='/main'>
         <CarouselPage />
       </Route>
-      <Route path='util'>
+      <Route path='/util'>
         <UtilRouter />
       </Route>
     </Switch>

@@ -33,23 +33,23 @@ const Carousel = (props: CarouselProps) => {
 export default Carousel;
 
 const StyledWrap = styled.div`
+  /* 전체 페이지 패딩 잡는 것이 좋음 */
+  padding: 0 20px;
+  letter-spacing: -0.02em;
+  position: relative;
   .title{
-    padding-left: 20px;
     white-space: pre-wrap;
     margin-bottom: 10px;
     line-height: 29px;
-    width: 250px;
     font-weight: 700;
     font-size: 20px;
     color: #292929;
   }
   .sub_title {
-    padding-left: 20px;
     margin-bottom: 8px;
     font-size: 12px;
     color: #292929;
   }
   .button{
-    padding: 0 20px;
   }
 `;
