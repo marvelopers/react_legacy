@@ -1,4 +1,10 @@
 ### component
+npm install @types/react-router-dom
+모듈화
+      - 달력
+      - 아이템 슬라이드
+      - 모달
+
 
 #### data
 - key, title, contents, author, createAt, updateAt
