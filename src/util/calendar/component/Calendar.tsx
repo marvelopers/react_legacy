@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import styled from "styled-components";
 
 
-
-
 const Calendar = () => {
   //day
   const dayjs = require('dayjs');
@@ -16,25 +14,24 @@ const Calendar = () => {
   dayjs.extend(isoWeek);
   dayjs.extend(weekOfYear);
 
+
   const today = dayjs();
   const [viewDate, setViewDate] = useState(dayjs());
   const [selectDate, setSelectDate] = useState(dayjs());
 
   const createCalendar = () => {
-
-    // const startWeek = props.date.clone().startOf('month').week();
-    // const endWeek = props.date.clone().endOf('month').week() === 1 ? 53 : props.date.clone().endOf('month').week();
-
     const startWeek = viewDate.startOf('month').week();
     const endWeek = viewDate.endOf('month').week() === 1 ? 53 : viewDate.endOf('month').week();
     let calender = [];
+
+    console.log()
 
     for (let week = startWeek; week <= endWeek; week++) {
       calender.push(
         <div className="row" key={week}>
           {Array(7).fill(0).map((n, i) => {
             // 현재 날짜 (기준)
-            let current = today.startOf('week').week(week).add(n + i, 'day');
+            let current = today.startOf('week').week(week - 52).add(n + i, 'day');
 
             let isSelected = selectDate.format('YYYYMMDD') === current.format('YYYYMMDD') ? 'selected' : '';
             let isToday = today.format('YYYYMMDD') === current.format('YYYYMMDD') ? 'today' : '';
