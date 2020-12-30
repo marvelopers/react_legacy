@@ -30,9 +30,12 @@ const Calendar = () => {
       calender.push(
         <div className="row" key={week}>
           {Array(7).fill(0).map((n, i) => {
+            console.log(week);
+            let current = today.startOf('week').week(week).add(n + i, 'day');
+            if (today.format('MM') === '12') {
+              current = today.startOf('week').week(week - 52).add(n + i, 'day');
+            }
             // 현재 날짜 (기준)
-            let current = today.startOf('week').week(week - 52).add(n + i, 'day');
-
             let isSelected = selectDate.format('YYYYMMDD') === current.format('YYYYMMDD') ? 'selected' : '';
             let isToday = today.format('YYYYMMDD') === current.format('YYYYMMDD') ? 'today' : '';
             let isNone = current.format('MM') === viewDate.format('MM') ? '' : 'none';
@@ -40,7 +43,7 @@ const Calendar = () => {
               <>
                 <div className={`box`} key={i} >
                   <div className={`text ${isSelected} ${isToday} ${isNone}`} onClick={() => { setSelectDate(current) }}>
-                    <span className={`day`}>{current.format('D')}</span>
+                    <span className={`day`}>{current.format('YYYYMMDD')}</span>
                     {isToday ? (<span className="isToday">오늘</span>)
                       : isSelected ? (<span className="isSelected">배송일</span>) : null}
                   </div>
