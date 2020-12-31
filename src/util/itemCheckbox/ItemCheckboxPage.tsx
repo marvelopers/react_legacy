@@ -3,7 +3,7 @@ import React from "react";
 const CalendarPage = () => {
   return (
     <>
-      여기는 캘린더
+      <h2>dayjs를 사용한 캘린더</h2>
     </>
   )
 }

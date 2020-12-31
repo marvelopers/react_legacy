@@ -15,7 +15,6 @@ const Calendar = () => {
   dayjs.extend(isoWeek);
   dayjs.extend(weekOfYear);
 
-
   const today = dayjs();
   const [viewDate, setViewDate] = useState(dayjs());
   const [selectDate, setSelectDate] = useState(dayjs());
@@ -44,7 +43,7 @@ const Calendar = () => {
                   <div className={`text ${isSelected} ${isToday} ${isNone}`} onClick={() => { setSelectDate(current) }}>
                     <span className={`day`}>{current.format('D')}</span>
                     {isToday ? (<span className="isToday">오늘</span>)
-                      : isSelected ? (<span className="isSelected">배송일</span>) : null}
+                      : isSelected ? (<span className="isSelected"></span>) : null}
                   </div>
                 </div >
               </>
@@ -77,7 +76,7 @@ const Calendar = () => {
         <button className='next_icon' onClick={() => changegeMonth(viewDate, 'add')}></button>
       </StyledHeader>
       <StyledBody>
-        <div className="row">
+        <div className="row week">
           <div className="box"><span className="text">SUN</span></div>
           <div className="box"><span className="text">MON</span></div>
           <div className="box"><span className="text">TUE</span></div>
@@ -102,6 +101,7 @@ const StyledHeader = styled.div`
   justify-content: center;
   align-content: center;
   margin: 20px;
+
   .thisMonth{
     font-weight: 700;
     color: #292929;
@@ -132,6 +132,10 @@ const StyledBody = styled.div`
     align-items: center;
     cursor: pointer;
     width: 100%;
+  }
+  .row.week{
+    height: 18px;
+    border-bottom: 1px solid #E8E8E8;
   }
   .box{
     width: 32px;
@@ -187,5 +191,4 @@ const StyledBody = styled.div`
   .none{
     display: none;
   }
- 
 `;
