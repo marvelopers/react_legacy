@@ -1,10 +1,12 @@
 import React from 'react';
 import { BrowserRouter, Switch } from 'react-router-dom';
 import RootRouter from './router/RootRouter';
+import { GlobalStyle } from './style';
 
 export default function App() {
   return (
     <BrowserRouter>
+      <GlobalStyle />
       <Switch>
         {/* <MainNav categories={CATEGORIES} /> */}
         <RootRouter />

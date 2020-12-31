@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-
+import previous from './previous_arrow.svg'
+import next from './next_arrow.svg'
 
 const Calendar = () => {
   //day
@@ -24,16 +25,14 @@ const Calendar = () => {
     const endWeek = viewDate.endOf('month').week() === 1 ? 53 : viewDate.endOf('month').week();
     let calender = [];
 
-    console.log()
 
     for (let week = startWeek; week <= endWeek; week++) {
       calender.push(
         <div className="row" key={week}>
           {Array(7).fill(0).map((n, i) => {
-            console.log(week);
-            let current = today.startOf('week').week(week).add(n + i, 'day');
-            if (today.format('MM') === '12') {
-              current = today.startOf('week').week(week - 52).add(n + i, 'day');
+            let current = viewDate.startOf('week').week(week).add(n + i, 'day');
+            if (viewDate.format('MM') === '12') {
+              current = viewDate.startOf('week').week(week - 52).add(n + i, 'day');
             }
             // 현재 날짜 (기준)
             let isSelected = selectDate.format('YYYYMMDD') === current.format('YYYYMMDD') ? 'selected' : '';
@@ -41,9 +40,9 @@ const Calendar = () => {
             let isNone = current.format('MM') === viewDate.format('MM') ? '' : 'none';
             return (
               <>
-                <div className={`box`} key={i} >
+                <div className={`box`} key={`${week}_${i}`} >
                   <div className={`text ${isSelected} ${isToday} ${isNone}`} onClick={() => { setSelectDate(current) }}>
-                    <span className={`day`}>{current.format('YYYYMMDD')}</span>
+                    <span className={`day`}>{current.format('D')}</span>
                     {isToday ? (<span className="isToday">오늘</span>)
                       : isSelected ? (<span className="isSelected">배송일</span>) : null}
                   </div>
@@ -68,6 +67,7 @@ const Calendar = () => {
         return date;
     }
   }
+
 
   return (
     <>
@@ -113,12 +113,13 @@ const StyledHeader = styled.div`
   }
   .previous_icon{
     width: 24px;
-    /* background: url(${`{S3_IMAGE_URL}/previous_month.svg`}) center  no-repeat; */
+    height: 24px;   
+    background: url(${previous}) center  no-repeat;
   }
   .next_icon{
     width: 24px;
     height: 24px;
-    /* background: url(${`{S3_IMAGE_URL}/next_month.svg`}) center no-repeat; */
+    background: url(${next}) center no-repeat;
   }
 `;
 
