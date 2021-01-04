@@ -44,5 +44,5 @@ export default TabSection;
 const StyledTabSection = styled.ul`  
   width: 100vw;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-a;
 `;

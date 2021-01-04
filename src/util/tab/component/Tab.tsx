@@ -24,10 +24,11 @@ export default Tab;
 
 const StyledTab = styled.li`
   width: 100%;
-  border: 1px solid #e8e8e8;
+  height: 2rem;
+  border-bottom: 1px solid #e8e8e8;
   text-align: center;
-
-  .active{
+  
+  &.active{
     border-bottom: 2px solid #494949;
   }
 `;
