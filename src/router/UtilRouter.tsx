@@ -4,6 +4,7 @@ import CalendarPage from '../util/calendar/CalendarPage';
 import ModalPage from '../util/modal/ModalPage';
 import MobileHeader from '../util/mobileHeader/component/MobileHeader';
 import DetailsTogglePage from '../util/detailsToggle/DetailsTogglePage';
+import TabSectionPage from '../util/tab/TabSectionPage';
 
 
 function UtilRouter() {
@@ -23,6 +24,10 @@ function UtilRouter() {
       <Route path="/util/detail">
         <MobileHeader isBack={true} PageName={'토글 페이지'} isCloseCallback={() => history.push("/main")} />
         <DetailsTogglePage />
+      </Route>
+      <Route path="/util/tab">
+        <MobileHeader isBack={true} PageName={'토글 페이지'} isCloseCallback={() => history.push("/main")} />
+        <TabSectionPage />
       </Route>
     </Switch>
   )
