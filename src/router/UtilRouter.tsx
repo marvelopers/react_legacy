@@ -3,6 +3,7 @@ import { Switch, Route, useHistory } from 'react-router-dom';
 import CalendarPage from '../util/calendar/CalendarPage';
 import ModalPage from '../util/modal/ModalPage';
 import MobileHeader from '../util/mobileHeader/component/MobileHeader';
+import DetailsTogglePage from '../util/detailsToggle/DetailsTogglePage';
 
 
 function UtilRouter() {
@@ -18,6 +19,10 @@ function UtilRouter() {
         <ModalPage />
       </Route>
       <Route path="/util/item_checkbox">
+      </Route>
+      <Route path="/util/detail">
+        <MobileHeader isBack={true} PageName={'토글 페이지'} isCloseCallback={() => history.push("/main")} />
+        <DetailsTogglePage />
       </Route>
     </Switch>
   )

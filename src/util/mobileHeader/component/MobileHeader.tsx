@@ -64,7 +64,8 @@ const MobileHeader = (props: HeadrProps) => {
             </div>
           )}
         </div>
-      </MobileNavbar>    </>
+      </MobileNavbar>
+    </>
   )
 }
 
