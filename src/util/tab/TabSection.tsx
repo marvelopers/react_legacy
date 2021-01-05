@@ -17,14 +17,14 @@ const TabSection = (props: TabDataProps) => {
   const { tabData, children } = props;
   const [selectedTab, setSelectedTab] = useState<number>(0);
 
-  const tabContentsArray = React.Children.toArray(children);
+  const tabPanelArray = React.Children.toArray(children);
 
   const onClickTab = (index: number) => {
     setSelectedTab(index);
   }
 
-  const selectedContentsElement = () => {
-    return tabContentsArray[selectedTab]
+  const selectedTabPanelElement = () => {
+    return tabPanelArray[selectedTab]
   }
 
   return (
@@ -34,7 +34,7 @@ const TabSection = (props: TabDataProps) => {
           <Tab key={tab.id} text={tab.text} index={index} selectedTab={selectedTab} onClick={onClickTab} />
         ))}
       </StyledTabSection>
-      {selectedContentsElement()}
+      {selectedTabPanelElement()}
     </>
   )
 }
