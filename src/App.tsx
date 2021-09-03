@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Switch } from 'react-router-dom';
 import RootRouter from './router/RootRouter';
-import { GlobalStyle } from './style';
+import { GlobalStyle } from './styles';
 
 export default function App() {
   return (
