@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import UtilRouter from './UtilRouter';
-import CarouselPage from '../main/carousel/CarouselPage';
+import CarouselPage from '../page/CarouselPage';
 
 
 function RootRouter() {

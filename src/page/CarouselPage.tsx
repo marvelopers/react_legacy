@@ -1,5 +1,5 @@
 import React from "react";
-import { response } from "./component/data";
+import { response } from "../lib/data";
 import Carousel from "./Carousel";
 
 const CarouselPage = () => {
